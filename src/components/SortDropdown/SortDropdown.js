@@ -17,12 +17,22 @@ class SortDropdown extends Component {
         id: "relevance",
         value: "Relevance",
         label: "Relevance"
+      },
+      originalSelected: {
+        id: "relevance",
+        value: "Relevance",
+        label: "Relevance"
       }
     };
   }
 
-  handleChange = () => {
-    sendAmplitudeData("SORT_CHANGE");
+  handleChange = e => {
+    sendAmplitudeData("SORT_CHANGE", {
+      value: e.value,
+      originalValue: this.state.originalSelected.value
+    });
+    const selectedOption = this.options.find(option => option.id === e.id);
+    this.setState({ ...this.state, originalSelected: selectedOption });
   };
 
   render() {

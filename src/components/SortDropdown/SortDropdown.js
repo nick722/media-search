@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Dropdown from "./Dropdown/Dropdown";
+import { sendAmplitudeData } from "../../utilities/amplitude";
 
 class SortDropdown extends Component {
   constructor(props) {
@@ -20,9 +21,17 @@ class SortDropdown extends Component {
     };
   }
 
+  handleChange = () => {
+    sendAmplitudeData("SORT_CHANGE");
+  };
+
   render() {
     return (
-      <Dropdown selected={this.state.defaultSelected} options={this.options} />
+      <Dropdown
+        handleChange={this.handleChange}
+        selected={this.state.defaultSelected}
+        options={this.options}
+      />
     );
   }
 }

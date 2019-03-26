@@ -1,10 +1,8 @@
 import React, { Component } from "react";
+import Select from "react-select";
 
-class Dropdown extends Component {
-  render() {
-    const defaultSelected = this.props.selected;
-    return <div>{defaultSelected.label}</div>;
-  }
-}
+const Dropdown = ({ options, selected, input }) => (
+  <Select defaultValue={selected} options={options} />
+);
 
 export default Dropdown;

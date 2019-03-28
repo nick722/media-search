@@ -45,7 +45,7 @@ class App extends Component {
     const selectedOption = this.props.options.find(
       option => option.id === e.id
     );
-    store.dispatch({
+    this.props.dispatch({
       type: "SELECT_OPTION",
       selectedSortOption: selectedOption
     });

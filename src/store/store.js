@@ -3,6 +3,21 @@ import { createStore } from "redux";
 const SELECT_OPTION = "SELECT_OPTION";
 const RESET_OPTION = "RESET_OPTION";
 
+//Actions
+export const selectOption = selectedOption => {
+  return {
+    type: "SELECT_OPTION",
+    selectedSortOption: selectedOption
+  };
+};
+
+export const resetOption = originalSortOption => {
+  return {
+    type: "RESET_OPTION",
+    selectedSortOption: originalSortOption
+  };
+};
+
 const initialState = {
   options: [
     { id: "relevance", value: "Relevance", label: "Relevance" },

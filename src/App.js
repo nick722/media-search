@@ -3,28 +3,22 @@ import { connect } from "react-redux";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
+import { selectOption, resetOption } from "./store/store";
 
 class App extends Component {
   handleChange = e => {
     sendAmplitudeData("SORT_CHANGE", {
       value: e.value,
       originalValue: this.props.originalSortOption.value
-      // originalValue: this.state.originalSortOption.value
     });
     const selectedOption = this.props.options.find(
       option => option.id === e.id
     );
-    this.props.dispatch({
-      type: "SELECT_OPTION",
-      selectedSortOption: selectedOption.id
-    });
+    this.props.dispatch(selectOption(selectedOption.id));
   };
 
   resetSortOption = e => {
-    this.props.dispatch({
-      type: "RESET_OPTION",
-      selectedSortOption: this.props.originalSortOption
-    });
+    this.props.dispatch(resetOption(this.props.originalSortOption));
   };
 
   render() {

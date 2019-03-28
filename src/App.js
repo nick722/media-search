@@ -23,11 +23,16 @@ function reducer(state = initialState, action) {
     case "SELECT_OPTION":
       return {
         ...state,
-        selectedSortOption: action.selectedSortOption.id
+        selectedSortOption: action.selectedSortOption
       };
+    case "RESET_OPTION":
+      return {
+        ...state,
+        selectedSortOption: action.selectedSortOption
+      };
+    default:
+      return state;
   }
-
-  return state;
 }
 
 export const store = createStore(
@@ -47,17 +52,27 @@ class App extends Component {
     );
     this.props.dispatch({
       type: "SELECT_OPTION",
-      selectedSortOption: selectedOption
+      selectedSortOption: selectedOption.id
+    });
+  };
+
+  resetSortOption = e => {
+    this.props.dispatch({
+      type: "RESET_OPTION",
+      selectedSortOption: this.props.originalSortOption
     });
   };
 
   render() {
     return (
-      <SortDropdown
-        options={this.props.options}
-        originalSortOption={this.props.originalSortOption}
-        handleChange={this.handleChange}
-      />
+      <>
+        <button onClick={this.resetSortOption}>Home</button>
+        <SortDropdown
+          options={this.props.options}
+          originalSortOption={this.props.originalSortOption}
+          handleChange={this.handleChange}
+        />
+      </>
     );
   }
 }

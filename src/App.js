@@ -6,6 +6,9 @@ import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
 
+const SELECT_OPTION = "SELECT_OPTION";
+const RESET_OPTION = "RESET_OPTION";
+
 const initialState = {
   options: [
     { id: "relevance", value: "Relevance", label: "Relevance" },
@@ -20,12 +23,12 @@ function reducer(state = initialState, action) {
   console.log("reducer", state, action);
 
   switch (action.type) {
-    case "SELECT_OPTION":
+    case SELECT_OPTION:
       return {
         ...state,
         selectedSortOption: action.selectedSortOption
       };
-    case "RESET_OPTION":
+    case RESET_OPTION:
       return {
         ...state,
         selectedSortOption: action.selectedSortOption

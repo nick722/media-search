@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import thunk from "redux-thunk";
 
 const SELECT_OPTION = "SELECT_OPTION";
 const RESET_OPTION = "RESET_OPTION";
@@ -47,5 +48,8 @@ function reducer(state = initialState, action) {
 
 export const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import { initAmplitude } from "./utilities/amplitude";
-import { store } from "./store/store";
+import store from "./store";
 
 initAmplitude();
 

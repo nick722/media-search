@@ -1,6 +1,3 @@
-import { applyMiddleware, compose, createStore } from "redux";
-import thunk from "redux-thunk";
-
 const SELECT_OPTION = "SELECT_OPTION";
 const RESET_OPTION = "RESET_OPTION";
 
@@ -29,7 +26,7 @@ const initialState = {
   originalSortOption: "relevance"
 };
 
-function reducer(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case SELECT_OPTION:
       return {
@@ -44,12 +41,4 @@ function reducer(state = initialState, action) {
     default:
       return state;
   }
-}
-
-export const store = createStore(
-  reducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+};

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
-import { selectOption, resetOption } from "./store/store";
+import { selectOption, resetOption } from "./store/sort";
 
 class App extends Component {
   handleChange = e => {
@@ -37,9 +37,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    options: state.options,
-    selectedSortOption: state.selectedSortOption,
-    originalSortOption: state.originalSortOption
+    options: state.sort.options,
+    selectedSortOption: state.sort.selectedSortOption,
+    originalSortOption: state.sort.originalSortOption
   };
 }
 

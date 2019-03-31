@@ -14,11 +14,11 @@ class App extends Component {
     const selectedOption = this.props.options.find(
       option => option.id === e.id
     );
-    this.props.dispatch(selectOption(selectedOption.id));
+    this.props.selectOption(selectedOption.id);
   };
 
   resetSortOption = e => {
-    this.props.dispatch(resetOption(this.props.originalSortOption));
+    this.props.resetOption(this.props.originalSortOption);
   };
 
   render() {
@@ -43,4 +43,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  selectOption,
+  resetOption
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

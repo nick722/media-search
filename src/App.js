@@ -4,8 +4,16 @@ import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
 import { selectOption, resetOption } from "./store/sort";
+import axios from "./axios-media-search";
 
 class App extends Component {
+  componentDidMount() {
+    axios
+      .get("options.json")
+      .then(response => console.log("response.data: ", response.data))
+      .catch(error => console.log(error));
+  }
+
   handleChange = e => {
     sendAmplitudeData("SORT_CHANGE", {
       value: e.value,
@@ -15,6 +23,13 @@ class App extends Component {
       option => option.id === e.id
     );
     this.props.selectOption(selectedOption.id);
+
+    //todo make http request
+    const selectedSortOption = "selectedSortOption";
+    axios
+      .post("/selectedSortOption.json", selectedSortOption)
+      .then(response => console.log("response:", response))
+      .catch(error => console.log(error));
   };
 
   resetSortOption = e => {

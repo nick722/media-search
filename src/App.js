@@ -4,7 +4,7 @@ import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
 import axios from "./axios-media-search";
-import { fetchOptions } from "./store/optionsActions";
+import { fetchOptions } from "./store/options/optionsActions";
 
 class App extends Component {
   componentDidMount() {

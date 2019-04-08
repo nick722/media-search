@@ -1,4 +1,4 @@
-import axios from "../axios-media-search";
+import axios from "../../axios-media-search";
 
 export const FETCH_OPTIONS_BEGIN = "FETCH_OPTIONS_BEGIN";
 export const FETCH_OPTIONS_SUCCESS = "FETCH_OPTIONS_SUCCESS";

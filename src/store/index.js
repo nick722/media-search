@@ -1,8 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import sort from "./sort";
+import options from "./optionsReducer";
 
-const reducers = combineReducers({ sort });
+const reducers = combineReducers({ sort, options });
 
 const store = createStore(
   reducers,

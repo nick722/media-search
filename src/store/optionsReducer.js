@@ -5,7 +5,7 @@ import {
 } from "./optionsActions";
 
 const initialState = {
-  options: [],
+  items: [],
   loading: false,
   error: null
 };
@@ -22,7 +22,7 @@ export default function optionsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        options: action.payload.options
+        items: JSON.parse(action.payload.items.data)
       };
 
     case FETCH_OPTIONS_FAILURE:
@@ -30,7 +30,7 @@ export default function optionsReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        options: []
+        items: []
       };
     default:
       return state;

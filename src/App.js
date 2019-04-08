@@ -3,15 +3,12 @@ import { connect } from "react-redux";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
 import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
-import { selectOption, resetOption } from "./store/sort";
 import axios from "./axios-media-search";
+import { fetchOptions } from "./store/optionsActions";
 
 class App extends Component {
   componentDidMount() {
-    axios
-      .get("options.json")
-      .then(response => console.log("response.data: ", response.data))
-      .catch(error => console.log(error));
+    this.props.dispatch(fetchOptions());
   }
 
   handleChange = e => {
@@ -37,11 +34,20 @@ class App extends Component {
   };
 
   render() {
+    const { error, loading, options } = this.props;
+    if (error) {
+      return <div>Error!! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <>
         <button onClick={this.resetSortOption}>Home</button>
         <SortDropdown
-          options={this.props.options}
+          options={options}
           originalSortOption={this.props.originalSortOption}
           handleChange={this.handleChange}
         />
@@ -52,18 +58,15 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    options: state.sort.options,
+    options: state.options.items,
+    loading: state.options.loading,
+    error: state.options.error,
     selectedSortOption: state.sort.selectedSortOption,
     originalSortOption: state.sort.originalSortOption
   };
 }
 
-const mapDispatchToProps = {
-  selectOption,
-  resetOption
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(App);

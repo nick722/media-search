@@ -8,9 +8,9 @@ export const fetchOptionsBegin = () => ({
   type: FETCH_OPTIONS_BEGIN
 });
 
-export const fetchOptionsSuccess = options => ({
+export const fetchOptionsSuccess = items => ({
   type: FETCH_OPTIONS_SUCCESS,
-  payload: { options }
+  payload: { items }
 });
 
 export const fetchOptionsFailure = error => ({
@@ -23,8 +23,10 @@ export function fetchOptions() {
     dispatch(fetchOptionsBegin());
     return axios
       .get("options.json")
-      .then(response => console.log("response.data: ", response.data))
-      .catch(error => console.log(error));
-    fetchOptionsSuccess;
+      .then(response => {
+        dispatch(fetchOptionsSuccess(response));
+        return response;
+      })
+      .catch(error => dispatch(fetchOptionsFailure(error)));
   };
 }

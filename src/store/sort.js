@@ -17,11 +17,6 @@ export const resetOption = originalSortOption => {
 };
 
 const initialState = {
-  options: [
-    // { id: "relevance", value: "Relevance", label: "Relevance" },
-    // { id: "DateNewest", value: "Newest Date", label: "Newest Date" },
-    // { id: "DateOldest", value: "Oldest Date", label: "Oldest Date" }
-  ],
   selectedSortOption: "relevance",
   originalSortOption: "relevance"
 };

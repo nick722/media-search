@@ -8,7 +8,7 @@ import { fetchOptions } from "./store/options/optionsActions";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchOptions());
+    fetchOptions();
   }
 
   handleChange = e => {
@@ -66,7 +66,11 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return dispatch(fetchOptions());
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(App);

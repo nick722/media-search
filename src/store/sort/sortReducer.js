@@ -2,7 +2,11 @@ import { SELECT_OPTION, RESET_OPTION } from "./sortActions";
 
 const initialState = {
   selectedSortOption: "relevance",
-  originalSortOption: "relevance"
+  originalSortOption: {
+    id: "relevance",
+    value: "Relevance",
+    label: "Relevance"
+  }
 };
 
 export default (state = initialState, action) => {
@@ -15,7 +19,7 @@ export default (state = initialState, action) => {
     case RESET_OPTION:
       return {
         ...state,
-        selectedSortOption: action.selectedSortOption
+        selectedSortOption: action.originalSortOption
       };
     default:
       return state;

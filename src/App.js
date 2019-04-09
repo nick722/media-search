@@ -5,6 +5,7 @@ import "./App.css";
 import { sendAmplitudeData } from "./utilities/amplitude";
 import axios from "./axios-media-search";
 import { fetchOptions } from "./store/options/optionsActions";
+import { selectOption } from "./store/sort/sortActions";
 
 class App extends Component {
   componentDidMount() {
@@ -19,13 +20,10 @@ class App extends Component {
     const selectedOption = this.props.options.find(
       option => option.id === e.id
     );
-    this.props.selectOption(selectedOption.id);
-
-    //todo make http request
-    const selectedSortOption = "selectedSortOption";
+    this.props.selectOption(selectedOption);
     axios
-      .post("/selectedSortOption.json", selectedSortOption)
-      .then(response => console.log("response:", response))
+      .post("/selected.json", selectedOption)
+      // .then(response => console.log("response:", response))
       .catch(error => console.log(error));
   };
 
@@ -67,7 +65,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchOptions: () => dispatch(fetchOptions())
+  fetchOptions: () => dispatch(fetchOptions()),
+  selectOption: () => dispatch(selectOption())
 });
 
 export default connect(

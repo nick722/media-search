@@ -13,3 +13,6 @@ Options:
 Default value:
 { \"id\": \"relevance\", \"value\": \"Relevance\", \"label\": \"Relevance\" }
 { "id": "relevance", "value": "Relevance", "label": "Relevance" }
+
+{ \"id\": \"DateNewest\", \"value\": \"Newest Date\", \"label\": \"Newest Date\" }
+"{ "id": "DateNewest", "value": "Newest Date", "label": "Newest Date" }"

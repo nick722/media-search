@@ -1,7 +1,11 @@
 import { SELECT_OPTION, RESET_OPTION } from "./sortActions";
 
 const initialState = {
-  selectedSortOption: "relevance",
+  selectedSortOption: {
+    id: "DateNewest",
+    value: "Newest Date",
+    label: "Newest Date"
+  },
   originalSortOption: {
     id: "relevance",
     value: "Relevance",
